@@ -1,46 +1,62 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { View, StyleSheet, Text, Button, AppRegistry } from 'react-native';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 
-export default class MainPage extends Component {
+class ChatScreen extends Component {
+  static navigationOptions = ({navigation}) => ({
+    title: `Chat with ${navigation.state.params.user}`,
+  });
+
   render() {
+    const { params } = this.props.navigation.state;
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text>这是主界面</Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+      <View>
+        <Text>Chat with {params.user} </Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+class RecentChatsScreen extends Component {
+  render() {
+    return (
+      <View>
+        <Text>List of recent chats</Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('Chat', {user: 'Lucy'})}
+          title='Chat with Lucy'
+        />
+      </View>
+    );
+  }
+}
+
+class AllChatsScreen extends Component {
+  render() {
+    return (
+      <View>
+        <Text>List of all contacts</Text>
+        <Button
+          onPress={() => this.props.navigation.navigate('Chat', {user: 'Lucy'})}
+          title='Chat with Lucy'
+        />
+      </View>
+    );
+  }
+}
+
+const TabScreenNavigator = TabNavigator({
+  Recent: {screen: RecentChatsScreen},
+  All: {screen: AllChatsScreen},
 });
+
+TabScreenNavigator.navigationOptions = {
+  title: 'My Chats',
+};
+
+export const MainPage = StackNavigator({
+  Home: {screen: TabScreenNavigator},
+  Chat: {screen: ChatScreen},
+});
+
+export default MainPage;
