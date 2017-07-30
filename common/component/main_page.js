@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, Text, Button, AppRegistry } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
+import DrawerPage from './drawer_navigation_page';
 
 class ChatScreen extends Component {
   static navigationOptions = ({navigation}) => ({
@@ -48,6 +49,7 @@ class AllChatsScreen extends Component {
 const TabScreenNavigator = TabNavigator({
   Recent: {screen: RecentChatsScreen},
   All: {screen: AllChatsScreen},
+  Expoler: {screen: DrawerPage},
 });
 
 TabScreenNavigator.navigationOptions = {
