@@ -49,8 +49,11 @@ class AllChatsScreen extends Component {
 const TabScreenNavigator = TabNavigator({
   Recent: {screen: RecentChatsScreen},
   All: {screen: AllChatsScreen},
-  Expoler: {screen: DrawerPage},
-});
+},
+  {
+    tabBarPosition: 'bottom',
+  }
+);
 
 TabScreenNavigator.navigationOptions = {
   title: 'My Chats',

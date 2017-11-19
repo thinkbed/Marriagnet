@@ -11,6 +11,6 @@ import {
   Text,
   View
 } from 'react-native';
-import MainPage from './common/component/main_page';
+import MainPage from './common/screens/main_page';
 
 AppRegistry.registerComponent('Marriagnet', () => MainPage);
