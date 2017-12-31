@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, FlatList, Text, Button, AppRegistry, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, FlatList, Text, TextInput, Alert, Button, AppRegistry, Image, TouchableOpacity } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import {List, ListItem} from 'react-native-elements';
+
+import LoginScreen from './login_screen';
 
 var image1 = require('../../images/image11.jpeg')
 var image2 = require('../../images/image10.jpeg')
@@ -92,12 +94,19 @@ class HomeScreen extends Component {
   "time": "11:22 AM",
   image: image10
 }],
-    }
+  logined: false  }
+
+  this.onLoginStateChanged = this.onLoginStateChanged.bind(this);
   }
 
   static navigationOptions = {
     title: '推荐',
   };
+
+  onLoginStateChanged(is_logined)
+  {
+    this.setState({logined:is_logined});  
+  }
 
   render() {
     return (
@@ -122,6 +131,7 @@ class HomeScreen extends Component {
         />
       </List>
     );
+    
   }
 }
 

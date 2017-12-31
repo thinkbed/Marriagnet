@@ -9,7 +9,9 @@
   "dependencies": {
     "react": "16.0.0-alpha.12",
     "react-native": "0.46.4",
+    "react-native-elements": "^0.18.2",
     "react-native-tab-view": "0.0.67",
+    "react-native-vector-icons": "^4.4.2",
     "react-navigation": "^1.0.0-beta.11"
   },
   "devDependencies": {
